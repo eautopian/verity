@@ -9,4 +9,5 @@ public enum SyntaxKind : byte
 	Star,
 	RightSlash,
 	Eof,
+	Unknown,
 }

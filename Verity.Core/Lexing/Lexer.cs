@@ -25,47 +25,32 @@ public sealed class Lexer(string input)
 		while (!IsEof())
 		{
 			char character = Current();
+			int start = _position;
 
 			if (AtWhitespace())
 			{
-				yield return LexWhitespace(_position);
+				yield return LexWhitespace(start);
 				continue;
-			}
-
-			switch (character)
-			{
-				case '+':
-					yield return LexTemporaryReplaceThis(_position, 1, SyntaxKind.Plus, true);
-					continue;
-				case '-':
-					yield return LexTemporaryReplaceThis(_position, 1, SyntaxKind.Minus, true);
-					continue;
-				case '*':
-					yield return LexTemporaryReplaceThis(_position, 1, SyntaxKind.Star, true);
-					continue;
-				case '/':
-					yield return LexTemporaryReplaceThis(_position, 1, SyntaxKind.RightSlash, true);
-					continue;
 			}
 
 			if (AtNumber())
 			{
-				yield return LexNumber(_position);
+				yield return LexNumber(start);
 				continue;
 			}
 
-			Console.WriteLine("unexpected character " + character);
-			Advance();
-			break;
+			var operation = OperationsMatcher.TryMatch(_input, start);
+			if (operation is SyntaxKind matchedOperation)
+			{
+				Advance(1);
+				yield return MakeToken(matchedOperation, start);
+				continue;
+			}
+
+			throw new Exception("unexpected character " + character);
 		}
 
 		yield return new Token(SyntaxKind.Eof);
-	}
-
-	private Token LexTemporaryReplaceThis(int start, int length, SyntaxKind kind, bool? stripText)
-	{
-		Advance(length);
-		return MakeToken(kind, start, stripText);
 	}
 
 	private Token LexWhitespace(int start)
