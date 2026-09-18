@@ -1,0 +1,23 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "Verity.Core/obj": true,
+        "Verity.Core/bin": true,
+        "*/obj": true,
+        "*/bin": true,
+        "Verity.Old/obj": true
+    },
+    "hide-files.files": [
+        "*/obj",
+        "*/bin",
+    ],
+    "dotnet.defaultSolution": "verity.sln",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.tabCompletion": "on",
+    "vscord.enable": false
+}
