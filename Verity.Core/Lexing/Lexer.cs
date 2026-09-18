@@ -44,7 +44,7 @@ public sealed class Lexer(string input)
 					yield return LexTemporaryReplaceThis(_position, 1, SyntaxKind.Star, true);
 					continue;
 				case '/':
-					yield return LexTemporaryReplaceThis(_position, 1, SyntaxKind.Slash, true);
+					yield return LexTemporaryReplaceThis(_position, 1, SyntaxKind.RightSlash, true);
 					continue;
 			}
 

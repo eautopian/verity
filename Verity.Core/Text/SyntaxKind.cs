@@ -7,6 +7,6 @@ public enum SyntaxKind : byte
 	Plus,
 	Minus,
 	Star,
-	Slash,
+	RightSlash,
 	Eof,
 }
