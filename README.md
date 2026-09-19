@@ -26,8 +26,8 @@ REPL -> Lexer -> Parser -> Evaluator
 - [x] Evaluator
 - [x] Division, Multiplication, Addition, Subtraction
 - [x] REPL
-- [ ] Brackets ()    (3 * 2 + 4) * 4 = 40
-- [ ] Indices ^2     2+2*3^2 = 2 + (2 * 3 ^ 2) = 20
+- [ ] Brackets () ---> (3 * 2 + 4) * 4 = 40
+- [ ] Indices ^2 ---> 2+2*3^2 = 2 + (2 * 3 ^ 2) = 20
 
 In the future, I plan to get Verity to a working state which allows something simple like;
 ```js
